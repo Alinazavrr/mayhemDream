@@ -1,0 +1,10 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+  <h2>Update News</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
+{% endblock %}

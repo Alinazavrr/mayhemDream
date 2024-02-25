@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y; /* Повторять изображение только по вертикали */
+    background-attachment: fixed; /* Зафиксировать изображение при прокрутке */
+    height: 100%;
+}
+
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row; /* Добавлено */
+}
+
+.navbar ul li {
+    display: inline-block; /* Изменено */
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+
+.bulletin-board {
+    background-color: rgba(255, 255, 255, 0.85); /* Чуть прозрачный белый цвет фона доски объявлений */
+    padding: 40px; /* Увеличим отступы */
+    margin: 40px; /* Увеличим отступы */
+    border-radius: 10px;
+    text-align: center; /* Выровняем текст по центру */
+    display: block; 
+}
+
+.profile-container {
+    position: absolute; /* Позиционируем абсолютно */
+    top: 30%; /* Располагаем верхний край чуть выше центра */
+    left: 50%; /* Располагаем левый край по середине */
+    transform: translate(-50%, -50%); /* Сдвигаем элемент на половину его ширины и высоты назад */
+    /* Остальные стили */
+}
+
+.content {
+    padding: 20px;
+    max-width: 60%;
+    display: block;
+    margin: 0 auto;
+}
+
+.news {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news img {
+    max-width: 100%; /* Максимальная ширина изображения равна ширине контейнера */
+    height: auto; /* Сохраняет пропорции изображения */
+    border-radius: 10px 10px 0 0; /* Закругление верхних углов изображения */
+    display: block; /* Обязательно для использования margin: auto; */
+    margin: 0 auto; /* Перемещает изображение по центру горизонтально */
+}
+
+.news h2 {
+    margin-top: 0;
+    text-align: center; /* Выравнивание текста по центру */
+}
+.news p {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.shop-content {
+    position: relative;
+    padding: 120px 20px 20px; /* Увеличим верхний отступ */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.shop-content::before {
+    content: 'Магазин MayhemDream';
+    position: absolute;
+    top: 40px; /* Переместим прямоугольник с надписью ниже */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 60px;
+    line-height: 60px; 
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0 20px;
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
+}
+
+
+.product {
+    flex-basis: calc(25% - 20px); /* Учитываем отступы между товарами */
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.product h2 {
+    margin-top: 0;
+}
+
+.product p {
+    margin-bottom: 0;
+}
+
+.price {
+    font-weight: bold;
+}
+
+
+
+.profile-separator {
+    border-left: 1px solid #ccc; /* Цвет и стиль линии между изображением и текстом */
+    height: 100%;
+    margin-left: 20px; /* Расстояние между линией и текстом */
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('Image/background.png'); /* Замените путь на свой */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .profile-container {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+        }
+
+        .profile-left {
+            width: 33.33%;
+            border-right: 2px solid #ccc; /* Толщина линии между левой и правой частями */
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        .profile-right {
+            width: 66.66%;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+
+        .profile-left img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .profile-right p {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="main.html">MayhemDream</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="shop.html">Магазин</a></li>
+        <li><a href="rules.html">Правила</a></li>
+        <li><a href="profile.html">Аккаунт</a></li>
+    </ul>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 profile-container">
+            <div class="profile-left">
+                <!-- Здесь может быть ваше изображение -->
+                <img src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}path/to/default/image.jpg{% endif %}" alt="Profile Image" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-8 profile-container">
+            <div class="profile-right">
+                <!-- Здесь может быть информация о вашем аккаунте -->
+                <h2>Профиль</h2>
+                <p>Имя пользователя: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+                <!-- Добавьте другие поля профиля, если необходимо -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

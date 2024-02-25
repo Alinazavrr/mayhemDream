@@ -1,0 +1,42 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} Покупки {% endblock %}
+
+
+{% block content %}
+  <div class="container mt-5" style='background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  padding-bottom: 20px;'>
+    <h2>Список покупок</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Продукт</th>
+          <th scope="col">Дата покупки</th>
+          <th scope="col">Статус</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for purchase in purchases %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ purchase.product.name }}</td>
+            <td>{{ purchase.purchase_date }}</td>
+            <td>
+              {% if purchase.is_active %}
+                <span class="badge badge-success">Активна</span>
+              {% else %}
+                <span class="badge badge-danger">Истекла</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

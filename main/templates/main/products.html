@@ -1,0 +1,43 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+
+{% block title %} Магазин {% endblock %}
+
+{% block content %}
+    <div class="shop-content">
+        {% for product in products %}
+            <div class="product">
+                <img src="{{ product.image.url }}" alt="Product Image">
+                <a class='fs-3' href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a>
+                {% if product.duration == 0 %}
+                    <p> Навсегда </p>
+                {% else %}
+                    {% with remainder=product.duration|add:0|divisibleby:10 %}
+                        {% if remainder == 1 %}
+                            <p>{{ product.duration }} месяц </p>
+                        {% elif remainder <= 4 %}
+                            <p>{{ product.duration }} месяца </p>
+                        {% else %}
+                            <p>{{ product.duration }} месяцев </p>
+                        {% endif %}
+                    {% endwith %}
+                {% endif %}
+                <p class="price">Цена: ${{ product.price }}</p>
+                {% if user.is_staff %}
+                    <a class="btn btn-primary" role="button" href="{% url 'product_update' pk=product.pk %}" style='margin-right: 10px'>Редактировать</a>
+                    <a class="btn btn-danger" role="button" href="{% url 'product_delete' pk=product.pk %}" style='padding-right: 25px; padding-left: 25px'>Удалить</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    
+    {% comment %} <div class="d-flex justify-content-center">
+        {% bootstrap_pagination products size='medium' %}
+    </div>
+     {% endcomment %}
+
+    {% if user.is_staff %}
+        <a class="btn btn-info" role="button" href="{% url 'product_create' %}" style='display: block; margin: 0 auto;'>Создать</a>
+    {% endif %}
+{% endblock %}

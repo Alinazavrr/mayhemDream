@@ -1,0 +1,33 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block title %} Информация о Продукте {% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>{{ product.name }}</h2>
+    <div class="row">
+      <div class="col-md-6">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+        {% else %}
+          <p>No image available</p>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        {% with remainder=product.duration|add:0|divisibleby:10 %}
+            {% if remainder == 1 %}
+                <p><strong>Длительность:</strong> 1 месяц </p>
+            {% elif remainder <= 4 %}
+                <p><strong>Длительность:</strong> {{ product.duration }} месяца </p>
+            {% else %}
+                <p><strong>Длительность:</strong> {{ product.duration }} месяцев </p>
+            {% endif %}
+        {% endwith %}
+        <p><strong>Описание:</strong> {{ product.description }}</p>
+        <p><strong>Цена:</strong> ${{ product.price }}</p>
+        <a href="{% url 'product_page' %}" class="btn btn-primary">К списку Привелегий</a>
+        <a href="{% url 'purchase_create'%}?product_id={{ product.id }}" class="btn btn-success">Купить</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

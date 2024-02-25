@@ -1,0 +1,26 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Зарегестрироваться{% endblock %}
+
+{% block header %}Регистрация{% endblock %}
+
+{% block content %}
+<div class='container align-items-center news mt-4'>
+    <div class="container mt-5 mb-3">
+        <div>
+            <h2>Форма регистрации</h2>
+            <p> P.s в пароль вводить пароль из майнкрафта, в username ваш никнейм</p>
+            {% if user.is_authenticated %}
+                <p>Вы уже в сети</p>
+            {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

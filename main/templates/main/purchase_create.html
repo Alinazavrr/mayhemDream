@@ -1,0 +1,15 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block title %} Информация о Продукте {% endblock %}
+
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Оплата товара</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Оплатить</button>
+    </form>
+  </div>
+{% endblock %}

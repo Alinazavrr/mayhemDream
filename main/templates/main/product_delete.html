@@ -1,0 +1,20 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+
+{% block title %} Магазин {% endblock %}
+
+{% block content %}
+<div class='container align-items-center'>
+    <div class="container mt-4">
+        <h2>Delete Product</h2>
+        <div class="alert alert-danger">
+          Are you sure you want to delete "{{ object }}"?
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+          <a href="{% url 'product_page' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+      </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} Профиль {% endblock %}
+
+
+{% block content %}
+<div class='container align-items-center mt-5 news'>
+    <div class="container mt-4 mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>User Profile</h2>
+                <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+                <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
+                <p><strong>First Name:</strong> {{ user_profile.user.first_name }}</p>
+                <p><strong>Last Name:</strong> {{ user_profile.user.last_name }}</p>
+                <p><strong>Date Joined:</strong> {{ user_profile.user.date_joined }}</p>
+                <!-- Добавьте другие поля пользователя по необходимости -->
+            </div>
+            <div class="col-md-6">
+                <h2>Profile Information</h2>
+                {% if user_profile.skin %}
+                    <img src="{{ user_profile.skin.url }}" alt="User Skin" class="img-fluid">
+                {% else %}
+                    <p>No skin available</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 profile-separator"></div> <!-- Линия находится справа от текста -->
+        </div>
+
+        <div class="row justify-content-space-center mt-3">
+            <div class="col-md-4 text-center">
+                <a href="{% url 'purchase_page' %}" class="btn btn-primary">История Покупок</a>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="{% url 'user_logout' %}" class="btn btn-warning">Выйти с Аккаунта</a>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="{% url 'delete_account_page' %}" class="btn btn-danger">Удалить Аккаунт</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

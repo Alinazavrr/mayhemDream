@@ -1,0 +1,26 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+<div class="content">
+  {% if user.is_staff %}
+    <a class="btn btn-info" role="button" href="{% url 'news_create' %}">Создать Новость</a>
+  {% endif %}
+  {% for news in news_list %} 
+      <div class="news">
+        {% if news.image %}
+          <img src="{{ news.image.url }}" alt="News Image">
+        {% else %}
+          No image to this post
+        {% endif %}
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.content }}</p>
+        <p>{{ news.pub_date }}</p>
+        {% if user.is_staff %}
+          <a class="btn btn-primary" role="button" href="{% url 'news_update' pk=news.pk %}" style='margin-right: 10px'>Редактировать</a>
+          <a class="btn btn-danger" role="button" href="{% url 'news_delete' pk=news.pk %}" style='padding-right: 25px; padding-left: 25px'>Удалить</a>
+        {% endif %}
+      </div>
+    {% endfor %}
+</div>
+  
+{% endblock %}
